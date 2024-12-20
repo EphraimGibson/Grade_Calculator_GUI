@@ -43,7 +43,7 @@ namespace CppCLRWinFormsProject {
 	protected:
 
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::RichTextBox^ textBox1;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
@@ -103,7 +103,7 @@ namespace CppCLRWinFormsProject {
 		void InitializeComponent(void)
 		{
 			this->buttonOpen = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -595,21 +595,21 @@ List<Person^>^ Persons = gcnew List<Person^>();
 void UpdateLabel() {
 	richTextBoxInfo->Text = "";
 
+	auto pBuilder = gcnew System::Text::StringBuilder();  //using a stringbuilder object becuase of frequent concatenation 
+
 	if (radioButtonAverage->Checked){
 		for each (Person ^ p in Persons) {
 
 			p->calcAverage();
 
-			richTextBoxInfo->Text += p->getFullname() + "    ";
+			pBuilder->AppendFormat("{0}    ", p->getFullname());
 
 			for each (double h in p->getHW()) {
-				richTextBoxInfo->Text += h.ToString() + "  ";
+				pBuilder->AppendFormat("{0}  ", h.ToString());
 			}
-
-			richTextBoxInfo->Text += "\t" + p->getExam().ToString() + "\t";
-
-			richTextBoxInfo->Text += "Grade:" + p->getGrade().ToString("F2") + "\n";
+			pBuilder->AppendFormat("\t{0}\tGrade: {1}\n", p->getExam().ToString(), p->getGrade().ToString("F2"));
 		}
+		richTextBoxInfo->Text = pBuilder->ToString();
 	}
 	else if (radioButtonMedian->Checked) {
 
@@ -617,16 +617,14 @@ void UpdateLabel() {
 
 			p->calcMedian();
 
-			richTextBoxInfo->Text += p->getFullname() + "    ";
+			pBuilder->AppendFormat("{0}    ", p->getFullname());
 
 			for each (double h in p->getHW()) {
-				richTextBoxInfo->Text += h.ToString() + "  ";
+				pBuilder->AppendFormat("{0}  ", h.ToString());
 			}
-
-			richTextBoxInfo->Text += "\t" + p->getExam().ToString() + "\t";
-
-			richTextBoxInfo->Text += "Grade:" + p->getGrade().ToString("F2") + "\n";
+			pBuilder->AppendFormat("\t{0}\tGrade: {1}\n", p->getExam().ToString(), p->getGrade().ToString("F2"));
 		}
+			richTextBoxInfo->Text = pBuilder->ToString();
 	}
 	
 
@@ -682,7 +680,6 @@ private: System::Void buttonInput_Click(System::Object^ sender, System::EventArg
 			 textBoxName->Text = "";
 			 textBoxHW->Text = "";
 			 textBoxExam->Text = "";
-
 		}
 	}
 	else MessageBox::Show("Input Field Empty", "Error", MessageBoxButtons::OK);
@@ -741,11 +738,13 @@ private: System::Void buttonCopy_Click(System::Object^ sender, System::EventArgs
 	
 	StringReader^ reader = gcnew StringReader(richTextBoxInfo->Text); //read information from input textbox
 	String^ line;
+	auto sBuilder = gcnew System::Text::StringBuilder();
 
 	while ((line = reader->ReadLine()) != nullptr) {				//read each line until the line in null
-		textBox1->Text += Environment::NewLine + line;
+		sBuilder->AppendFormat("{0}{1}", Environment::NewLine, line);
 	}
-
+	
+	textBox1->Text = sBuilder->ToString();
 	
 }
 private: System::Void buttonCopySelected_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -753,11 +752,14 @@ private: System::Void buttonCopySelected_Click(System::Object^ sender, System::E
 
 	StringReader^ reader = gcnew StringReader(Selected); // reads onyl selected text
 	String^ line;
+	auto sBuilder = gcnew System::Text::StringBuilder();
 
-	while ((line = reader->ReadLine()) != nullptr){
-		textBox1->Text += Environment::NewLine + line;
+
+	while ((line = reader->ReadLine()) != nullptr) {				
+		sBuilder->AppendFormat("{0}{1}", Environment::NewLine, line);
 	}
 
+	textBox1->Text = sBuilder->ToString();
 
 }
 	private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
