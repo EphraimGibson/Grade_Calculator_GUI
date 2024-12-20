@@ -1,0 +1,3 @@
+C:\Users\lush9\source\repos\My_first _CppCLR_WinFormsProject12024\Grade_Calculator_GUI\Grade_Calculator\x64\Release\My_first _CppCLR_WinFormsProject12024.vcxproj.AssemblyReference.cache
+C:\Users\lush9\source\repos\My_first _CppCLR_WinFormsProject12024\Grade_Calculator_GUI\Grade_Calculator\x64\Release\My_first__CppCLR_WinFormsProject12024.Form1.resources
+C:\Users\lush9\source\repos\My_first _CppCLR_WinFormsProject12024\Grade_Calculator_GUI\Grade_Calculator\x64\Release\My_first _CppCLR_WinFormsProject12024.vcxproj.GenerateResource.cache
