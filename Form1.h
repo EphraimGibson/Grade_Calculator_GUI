@@ -744,10 +744,15 @@ private: System::Void buttonCopy_Click(System::Object^ sender, System::EventArgs
 		sBuilder->AppendFormat("{0}{1}", Environment::NewLine, line);
 	}
 	
-	textBox1->Text = sBuilder->ToString();
+	textBox1->Text += sBuilder->ToString();
 	
 }
 private: System::Void buttonCopySelected_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (richTextBoxInfo->Text == "") {
+		MessageBox::Show("Nothing to Copy", "Empty field", MessageBoxButtons::OK);
+	}
+
 	String^ Selected = richTextBoxInfo->SelectedText; 
 
 	StringReader^ reader = gcnew StringReader(Selected); // reads onyl selected text
@@ -759,7 +764,7 @@ private: System::Void buttonCopySelected_Click(System::Object^ sender, System::E
 		sBuilder->AppendFormat("{0}{1}", Environment::NewLine, line);
 	}
 
-	textBox1->Text = sBuilder->ToString();
+	textBox1->Text += sBuilder->ToString();
 
 }
 	private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
