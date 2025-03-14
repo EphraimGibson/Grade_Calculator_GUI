@@ -1,9 +1,0 @@
-﻿  CppCLR_WinFormsProject.cpp
-C:\Users\lush9\source\repos\My_first _CppCLR_WinFormsProject12024\Grade_Calculator_GUI\Form1.h(659,28): warning C4101: 'e': unreferenced local variable
-  (compiling source file '/CppCLR_WinFormsProject.cpp')
-  
-C:\Users\lush9\source\repos\My_first _CppCLR_WinFormsProject12024\Grade_Calculator_GUI\Form1.h(669,28): warning C4101: 'e': unreferenced local variable
-  (compiling source file '/CppCLR_WinFormsProject.cpp')
-  
-  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  My_first _CppCLR_WinFormsProject12024.vcxproj -> C:\Users\lush9\source\repos\My_first _CppCLR_WinFormsProject12024\Grade_Calculator_GUI\x64\Release\Grade_Calculator.exe
