@@ -1,6 +1,6 @@
 # Grade Calculator GUI
 
-A sophisticated Windows Forms application built with C++/CLR designed to streamline the management of student grades and academic score calculations in educational environments.
+A simple Windows Forms application built with C++/CLR designed to streamline the management of student grades and academic score calculations in educational environments.
 
 ## Overview
 The Grade Calculator GUI provides educators with a user-friendly interface to manage, track, and calculate student grades efficiently. This tool simplifies the grading process and helps maintain accurate academic records.
@@ -92,6 +92,4 @@ This project is licensed under the terms specified in the LICENSE file included 
 ## Contributing
 We welcome contributions to improve the Grade Calculator GUI. Please feel free to submit issues and pull requests.
 
-# Grade_Calculator_GUI
 
-Simple grading app used to manage students scores in class and exams.
